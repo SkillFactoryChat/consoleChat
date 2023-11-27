@@ -3,26 +3,26 @@
 #include <exception>
 #include <memory>
 #include "Message.h"
-class UserLoginExp : public exception {//вызываем класс исключений, в случае, если пользователя all
+class UserLoginExp : public exception {//РЅР°СЃР»РµРґРѕРІР°РЅРёРµ РѕС‚ РєР»Р°СЃСЃР° exeption РґР»СЏ РїРѕСЃР»РµРґСѓСЋС‰РµР№ РѕР±СЂР°Р±РѕС‚РєРё РёСЃРєР»СЋС‡РµРЅРёР№
 public:
 	const char* what() const noexcept override
 	{
-		return " Ошибка: логин пользователя занят ";
+		return " РћС€РёР±РєР°: Р»РѕРіРёРЅ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ Р·Р°РЅСЏС‚ ";
 	}
 
 };
-class UserNameExp : public exception {//вызываем класс исключений, в случае , если пользователь all
+class UserNameExp : public exception {
 public:
 	const char* what()const noexcept override
 	{
-		return " Ошибка: имя пользователя занято ";
+		return " РћС€РёР±РєР°: РёРјСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ Р·Р°РЅСЏС‚Рѕ ";
 	}
 };
 class Chat {
-	bool _chatWorkCheck = false;//переменная, отвечающая за работу чата
-	vector<User> _userList;//создаем вектор, который хранит пользователей чата
-	vector<Message> _messageList;//создаем вектор, который хранит сообщения в чате
-	shared_ptr<User> _currentUser = nullptr;//shared указатель указывает на текущего пользователя
+	bool _chatWorkCheck = false;//РїРµСЂРµРјРµРЅРЅР°СЏ, РѕС‚РІРµС‡Р°СЋС‰Р°СЏ Р·Р° СЂР°Р±РѕС‚Сѓ С‡Р°С‚Р°
+	vector<User> _userList;//СЃРѕР·РґР°РµРј РІРµРєС‚РѕСЂ, РєРѕС‚РѕСЂС‹Р№ С…СЂР°РЅРёС‚ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ С‡Р°С‚Р°
+	vector<Message> _messageList;//СЃРѕР·РґР°РµРј РІРµРєС‚РѕСЂ, РєРѕС‚РѕСЂС‹Р№ С…СЂР°РЅРёС‚ СЃРѕРѕР±С‰РµРЅРёСЏ РІ С‡Р°С‚Рµ
+	shared_ptr<User> _currentUser = nullptr;//СѓРєР°Р·Р°С‚РµР»СЊ РЅР° С‚РµРєСѓС‰РµРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
 
 	void Login();
 	void SignUp();
