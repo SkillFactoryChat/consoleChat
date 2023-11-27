@@ -5,7 +5,7 @@
 void Chat::Start() {
 	_chatWorkCheck = true;
 }
-	shared_ptr<User>Chat::GetUserByLogin(const string& login) const //поиск пользователя по его логину
+	shared_ptr<User>Chat::GetUserByLogin(const string& login) const //РїРѕРёСЃРє РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РїРѕ Р»РѕРіРёРЅСѓ
 	{
 	for (auto& user : _userList)
 	{
@@ -26,24 +26,24 @@ void Chat::Start() {
 void Chat::ShowLoginMenu()
 {
 	setlocale(LC_ALL, "RUS");
-	_currentUser = nullptr;//присваиваем текущему пользователю значение nullptr 
+	_currentUser = nullptr;//РїСЂРёСЃРІР°РёРІР°РµРј С‚РµРєСѓС‰РµРјСѓ РїРѕР»СЊР·РѕРІР°С‚РµР»СЋ nullptr 
 		char operation;
 		do {
-			cout << "\033[33m" << " (1) Вход " << endl;
-			cout << " (2) Регистрация " << endl;
-			cout << " (0) Выход " << endl;
-			cout << "\033[36m" << ">>" << "\033[0m";
+			cout << " (1) Р’С…РѕРґ РІ С‡Р°С‚ " << endl;
+			cout << " (2) Р РµРіРёСЃС‚СЂР°С†РёСЏ РЅРѕРІРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ " << endl;
+			cout << " (0) Р’С‹С…РѕРґ РёР· С‡Р°С‚Р° " << endl;
+			cout << "Р’С‹Р±РµСЂРёС‚Рµ РґРµР№СЃС‚РІРёРµ: ";
 			cin >> operation;
 			switch (operation) {
 			case '1':
-				Login();//вход по логину и паролю
+				Login(); //РІС…РѕРґ РІ С‡Р°С‚ РїРѕ Р»РѕРіРёРЅСѓ Рё РїР°СЂРѕР»СЋ
 				break;
 			case '2':
 				try
 				{
-					SignUp();//регистрация нового пользователя
+					SignUp();//СЂРµРіРёСЃС‚СЂР°С†РёСЏ РЅРѕРІРѕРіРѕ СѓС‡Р°СЃС‚РЅРёРєР° С‡Р°С‚Р°
 				}
-				catch (const exception& e)//поиск ошибок при регистрации нового пользователя
+				catch (const exception& e)//РѕС‚СЂР°Р±РѕС‚РєР° РёСЃРєР»СЋС‡РµРЅРёР№; РїРѕРёСЃРє РѕС€РёР±РѕРє РїСЂРё СЂРµРіРёСЃС‚СЂР°С†РёРё
 				{
 					cout << e.what() << endl;
 				}
@@ -52,11 +52,11 @@ void Chat::ShowLoginMenu()
 				_chatWorkCheck = false;
 				break;
 			default:
-				cout << "1 или 2..." << endl;
+				cout << "Р’С‹Р±РµСЂРёС‚Рµ РґРµР№СЃС‚РІРёСЏ 1 РёР»Рё 2. Р”Р»СЏ РІС‹С…РѕРґР° РЅР°Р¶РјРёС‚Рµ 0" << endl;
 				break;
 
 			}
-		} while (!_currentUser && _chatWorkCheck);//цикл работает, пока не зарегистрирован пользователь, и пока чат работает
+		} while (!_currentUser && _chatWorkCheck);
 }
 void Chat::Login() 
 {
@@ -65,17 +65,17 @@ void Chat::Login()
 	char operation;
 
 	do {
-		cout << " Логин: ";
+		cout << " Р›РѕРіРёРЅ: ";
 		cin >> login;
-		cout << " Пароль: ";
+		cout << " РџР°СЂРѕР»СЊ: ";
 		cin >> password;
 
-		_currentUser = GetUserByLogin(login);//указатель на пользователя, который зарегистрировался
-		if (_currentUser == nullptr || (password != _currentUser ->GetUserPassword()))//если данного пользователя нет в векторе, то возвращаем пустой указаетель, или если неверный пароль
+		_currentUser = GetUserByLogin(login);//СѓРєР°Р·Р°С‚РµР»СЊ РЅР° Р·Р°СЂРµРіРµСЃС‚СЂРёСЂРѕРІР°РЅРЅРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+		if (_currentUser == nullptr || (password != _currentUser ->GetUserPassword()))//РїСЂРё РЅРµРІРµСЂРЅС‹С… РґР°РЅРЅС‹С… nullptr РёР»Рё РЅРµРІРµСЂРЅС‹Р№ РїР°СЂРѕР»СЊ
 		{
 			_currentUser = nullptr;
-			cout << " Вход не выполнен... " << endl;
-			cout << " (0) выход или (любая клавиша) повтор: ";
+			cout << " РћС€РёР±РєР° РІС…РѕРґР° " << endl;
+			cout << " РќР°Р¶РјРёС‚Рµ Р»СЋР±СѓСЋ РєР»Р°РІРёС€Сѓ РґР»СЏ РїРѕРІС‚РѕСЂРЅРѕР№ РїРѕРїС‹С‚РєРё РёР»Рё 0 РґР»СЏ РІС‹С…РѕРґР°: ";
 			cin >> operation;
 			if (operation == '0')
 				break;
@@ -88,23 +88,22 @@ void Chat::ShowChat()const
 	setlocale(LC_ALL, "");
 	string from;
 	string to;
-	cout << " ---Чат--- " << endl;
+	cout << " ---Р§РђРў--- " << endl;
 	for (auto& message : _messageList) 
 	{
-		if (_currentUser->GetUserLogin() == message.GetFrom() || _currentUser ->GetUserLogin() == message.GetTo() || message.GetTo() == " всем ")
-		{//если текущий пользователь
-			from = (_currentUser ->GetUserLogin() == message.GetFrom()) ? " я " : GetUserByLogin(message.GetFrom())->GetUserName();
-			if (message.GetTo() == " всем ")//отправка всем пользователям чата
+		if (_currentUser->GetUserLogin() == message.GetFrom() || _currentUser ->GetUserLogin() == message.GetTo() || message.GetTo() == " РІСЃРµРј ")
+		{
+			from = (_currentUser ->GetUserLogin() == message.GetFrom()) ? "СЏ" : GetUserByLogin(message.GetFrom())->GetUserName();
+			if (message.GetTo() == " РІСЃРµРј ")//РѕС‚РїСЂР°РІРєР° РІСЃРµРј РїРѕР»СЊР·РѕРІР°С‚РµР»СЏРј С‡Р°С‚Р°
 			{
-				to = " всем ";
+				to = "РІСЃРµРј";
 			}
 			else
 			{
-				to = (_currentUser ->GetUserLogin() == message.GetTo()) ? " я " : GetUserByLogin(message.GetTo())->GetUserName();
-//если мы текущее имя пользователя равно to, то отправляем сообщение самому себе, если нет, то получаем имя пользователя и присваиваем его значение полю to
+				to = (_currentUser ->GetUserLogin() == message.GetTo()) ? "СЏ" : GetUserByLogin(message.GetTo())->GetUserName();
 			}
-			cout << " Сообщение от " << from << " для " << to << endl;
-			cout << " текст сообщения :" << message.GetText() << endl;
+			cout << " Р’Р°Рј СЃРѕРѕР±С‰РµРЅРёРµ РѕС‚ " << from << " РґР»СЏ " << to << endl;
+			cout << " РўРµРєСЃС‚ СЃРѕРѕР±С‰РµРЅРёСЏ:" << message.GetText() << endl;
 		}
 	}
 	cout << "-----------" << endl;
@@ -115,33 +114,33 @@ void Chat::SignUp()
 	setlocale(LC_ALL, "");
 	string login, password, name;
 	double time;
-	cout << " логин: ";
+	cout << " РџСЂРёРґСѓРјР°Р№С‚Рµ Р»РѕРіРёРЅ: ";
 	cin >> login;
-	cout << " пароль:";
+	cout << " РџСЂРёРґСѓРјР°Р№С‚Рµ РїР°СЂРѕР»СЊ:";
 	cin >> password;
-	cout << " имя:";
+	cout << " Р’Р°С€Рµ РёРјСЏ:";
 	cin >> name;
-	if (GetUserByLogin(login) || login == " всем ")
+	if (GetUserByLogin(login) || login == "РІСЃРµРј")
 	{
 		throw UserLoginExp();
 	}
-	if (GetUserByName(name) || name == " всем ")
+	if (GetUserByName(name) || name == "РІСЃРµРј")
 	{
 		throw UserNameExp();
 
 	}
-	User user = User(login, password, name, time);//создание нового пользователя
-	_userList.push_back(user);//добавление пользователя
-	_currentUser = make_shared<User>(user);//создаем указатель на текущего пользователя
+	User user = User(login, password, name, time);//СЃРѕР·РґР°РЅРёРµ РЅРѕРІРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+	_userList.push_back(user);//РґРѕР±Р°РІР»РµРЅРёРµ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+	_currentUser = make_shared<User>(user);//СЃРѕР·РґР°РЅРёРµ СѓРєР°Р·Р°С‚РµР»СЏ РЅР° С‚РµРєСѓС‰РµРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
 }
 void Chat::ShowUserMenu() 
 {
 	setlocale(LC_ALL, "");
 	char operation;
-	cout << " Привет, " << _currentUser->GetUserName() << endl;
+	cout << " РџСЂРёРІРµС‚, " << _currentUser->GetUserName() << endl;
 	while (_currentUser) 
 	{
-		cout << " Меню: (1) Показать Чат | (2) Добавить сообщение | (3) Пользователи | (0) Выйти " << endl;
+		cout << " РњРµРЅСЋ: РџРѕРєР°Р·Р°С‚СЊ С‡Р°С‚ (1) | РќРѕРІРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ (2) | РџРѕР»СЊР·РѕРІР°С‚РµР»Рё (3) | Р’С‹С…РѕРґ (2) " << endl;
 		cout << endl;
 		cin >> operation;
 		switch (operation) 
@@ -159,7 +158,7 @@ void Chat::ShowUserMenu()
 			_currentUser = nullptr;
 			break;
 		default:
-			cout << " Неизвестный выбор " << endl;
+			cout << " РџРѕР¶Р°Р»СѓР№СЃС‚Р° РІС‹Р±РµСЂРёС‚Рµ РёР· СЃРїРёСЃРєР° " << endl;
 			break;
 		}
 	}
@@ -169,18 +168,18 @@ void Chat::AddMessage()
 	setlocale(LC_ALL, "");
 	string to, text;
 
-	cout << " Для (кому (имя) или все) ";
+	cout << " Р”Р»СЏ РєРѕРіРѕ: (РІРІРµРґРёС‚Рµ РёРјСЏ РёР»Рё РѕС‚РїСЂР°РІСЊС‚Рµ РІСЃРµРј СЃСЂР°Р·Сѓ (РІС‹Р±РµСЂРёС‚Рµ <<РІСЃРµРј>>)";
 	cin >> to;
-	cout << " Текст сообщения: ";
+	cout << "РўРµРєСЃС‚ СЃРѕРѕР±С‰РµРЅРёСЏ: ";
 	cin.ignore();
 	getline(cin, text);
-	if (!(to == " всем " || GetUserByName(to)))//отправка сообщения всем пользователям чата
+	if (!(to == "РІСЃРµРј" || GetUserByName(to)))
 	{
-		cout << " Ошибка отправки сообщения: не удается найти  " << to << endl;
+		cout << "РћС€РёР±РєР° РѕС‚РїСЂР°РІРєРё СЃРѕРѕР±С‰РµРЅРёСЏ: РЅРµ СѓРґР°РµС‚СЃСЏ РЅР°Р№С‚Рё РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ " << to << endl;
 		return;
 	}
-	if (to == " всем ")
-		_messageList.push_back(Message{ _currentUser->GetUserLogin()," всем ",text });
+	if (to == "РІСЃРµРј")
+		_messageList.push_back(Message{ _currentUser->GetUserLogin()," РІСЃРµРј ",text });
 	else
 		_messageList.push_back(Message{ _currentUser->GetUserLogin(),GetUserByName(to)->GetUserLogin(),text });
 
@@ -189,12 +188,12 @@ void Chat::AddMessage()
 void Chat::ShowAllUsersName()const
 {
 	setlocale(LC_ALL, "");
-	cout << "---Пользователи---" << endl;
+	cout << "---РџРѕР»СЊР·РѕРІР°С‚РµР»Рё---" << endl;
 	for (auto& user : _userList)
 	{
 		cout << user.GetUserName();
 		if (_currentUser->GetUserLogin() == user.GetUserLogin())
-			cout << " (я) ";
+			cout << " (РЇ) ";
 		cout << endl;
 
 	}
