@@ -20,7 +20,7 @@ public:
 	
 	void SetUserName(const string& name);
 
-	template<typename T> auto ShowUserData() -> decltype (_name, _password)//пример использования шаблонной функции
+	template<typename T> auto ShowUserData() -> decltype (_name, _password)//РїСЂРёРјРµСЂ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёСЏ С€Р°Р±Р»РѕРЅРЅРѕР№ С„СѓРЅРєС†РёРё
 	{
 		return _name;
 		return _password;
