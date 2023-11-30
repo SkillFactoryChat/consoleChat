@@ -25,7 +25,6 @@ void Chat::Start() {
 }
 void Chat::ShowLoginMenu()
 {
-	setlocale(LC_ALL, "ru_RU.UTF-8");
 	_currentUser = nullptr;//присваиваем текущему пользователю nullptr 
 		char operation;
 		do {
@@ -60,7 +59,6 @@ void Chat::ShowLoginMenu()
 }
 void Chat::Login() 
 {
-	setlocale(LC_ALL, "ru_RU.UTF-8");
 	string login, password;
 	char operation;
 
@@ -85,7 +83,6 @@ void Chat::Login()
 
 void Chat::ShowChat()const
 {
-	setlocale(LC_ALL, "ru_RU.UTF-8");
 	string from;
 	string to;
 	cout << " ---ЧАТ--- " << endl;
@@ -111,7 +108,6 @@ void Chat::ShowChat()const
 }
 void Chat::SignUp() 
 {
-	setlocale(LC_ALL, "ru_RU.UTF-8");
 	string login, password, name;
 	double time;
 	cout << " Придумайте логин: ";
@@ -135,7 +131,6 @@ void Chat::SignUp()
 }
 void Chat::ShowUserMenu() 
 {
-	setlocale(LC_ALL, "ru_RU.UTF-8");
 	char operation;
 	cout << " Привет, " << _currentUser->GetUserName() << endl;
 	while (_currentUser) 
@@ -165,7 +160,6 @@ void Chat::ShowUserMenu()
 }
 void Chat::AddMessage()
 {
-	setlocale(LC_ALL, "ru_RU.UTF-8");
 	string to, text;
 
 	cout << " Для кого: (введите имя или отправьте всем сразу (выберите <<всем>>)";
@@ -187,7 +181,6 @@ void Chat::AddMessage()
 
 void Chat::ShowAllUsersName()const
 {
-	setlocale(LC_ALL, "ru_RU.UTF-8");
 	cout << "---Пользователи---" << endl;
 	for (auto& user : _userList)
 	{
