@@ -5,7 +5,6 @@
 #include "Message.h"
 class UserLoginExp : public exception //наследование от класса exeption для последующей обработки исключений
 {
-setlocale(LC_ALL, "ru_RU.UTF-8);
 public:
 	const char* what() const noexcept override
 	{
@@ -22,7 +21,6 @@ public:
 };
 class Chat 
 {
-	setlocale(LC_ALL, "ru_RU.UTF-8);
 	bool _chatWorkCheck = false;//переменная, отвечающая за работу чата
 	vector<User> _userList;//создаем вектор, который хранит пользователей чата
 	vector<Message> _messageList;//создаем вектор, который хранит сообщения в чате
